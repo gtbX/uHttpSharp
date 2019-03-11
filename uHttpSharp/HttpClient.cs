@@ -206,7 +206,7 @@ namespace uhttpsharp {
         }
 
         private static Func<IHttpContext, Task> Aggregate(this IList<IHttpRequestHandler> handlers, int index) {
-            if (index == handlers.Count) return null;
+            if (index == handlers.Count) return (_) => Task.CompletedTask;
 
             var currentHandler = handlers[index];
             var nextHandler = handlers.Aggregate(index + 1);
