@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup  Label="Basic info">    
+  <PropertyGroup Label="Basic info">    
     <!-- Exe or Library-->
     <OutputType>Library</OutputType>
     <AssemblyName>uHttpSharp</AssemblyName>
