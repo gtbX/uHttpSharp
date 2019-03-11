@@ -16,6 +16,7 @@
     <AssemblyTitle>$(Product) - a micro http server</AssemblyTitle>
     <Copyright>Copyright (c) 2018</Copyright>
     <!-- The file version will be VersionPrefix and the Product version will be VersionPrefix-VersionSuffix -->
+    <ReleaseVersion>$(BUILD_NUMBER)</ReleaseVersion>
   </PropertyGroup>
 
   <PropertyGroup Label="Package info basic">
@@ -43,7 +44,7 @@
 
   <PropertyGroup Label="Compilation info">
     <!-- https://docs.microsoft.com/en-us/dotnet/standard/frameworks -->
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <!-- The operating system you are building for. Valid values are "Any CPU", "x86", and "x64" -->
     <Platform>Any Cpu</Platform>
     <Configuration>Release</Configuration>
@@ -56,6 +57,9 @@
   <!-- Need to be full if you want .pdb files to work for .net framework <= 4.7.1, otherwise portable is ok -->
   <!-- pdbonly = you get line numbers, full = you can attach the debugger! so use pdbonly for releases, none/embedded/portable -->
   <!-- portable = new .pdb format to use since dotnet and >= 4.7.1, embedded = same as portable excepct the .pdb is inside the .dll -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
   <Choose>  
     <When Condition="$(TargetFramework.Contains('netstandard')) OR $(TargetFramework.Contains('netcoreapp'))">  
       <PropertyGroup>  
