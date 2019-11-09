@@ -60,21 +60,13 @@ namespace uhttpsharp
             UpdateLastOperationTime();
         }
 
-        private async Task InitializeStream()
-        {
-            if (Client is ClientSslDecorator)
-            {
-                await ((ClientSslDecorator)Client).AuthenticateAsServer().ConfigureAwait(false);
-            }
-
-            _stream = new BufferedStream(_client.Stream, 8096);
-        }
-
         private async void Process()
         {
             try
             {
-                await InitializeStream();
+                await _client.InitializeStream().ConfigureAwait(false);
+        
+                _stream = new BufferedStream(_client.Stream, 8096);
 
                 while (_client.Connected)
                 {
