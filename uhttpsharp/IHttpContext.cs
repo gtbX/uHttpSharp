@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using uhttpsharp.Clients;
 using uhttpsharp.Headers;
 
 namespace uhttpsharp
