@@ -16,6 +16,8 @@ namespace uhttpsharp
 
         dynamic State { get; }
 
+        IClient Client { get; }
+
         EndPoint RemoteEndPoint { get; }
     }
 
